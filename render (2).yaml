@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: snapload-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 -m gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    envVars:
+      - key: ADMIN_SECRET
+        value: snapload_admin_2026
+      - key: PYTHON_VERSION
+        value: 3.11.0
